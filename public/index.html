@@ -1,0 +1,530 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="AI 智能助手 - 免费在线AI对话平台，支持GPT-4o、Claude等模型，提供AI聊天、AI绘画、智能写作、代码调试等功能。注册即送50000积分。">
+  <meta name="keywords" content="AI助手, AI聊天, AI绘画, 人工智能, GPT-4, ChatGPT替代, 免费AI, AI写作, 在线AI, 智能对话">
+  <meta name="theme-color" content="#10a37f">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="AI 智能助手">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI 智能助手 - 智能对话与创作平台">
+  <meta property="og:description" content="免费AI对话平台，支持GPT-4o、Claude等多模型，还有AI绘画功能。注册即送50000积分！">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://your-site.vercel.app">
+  <meta property="og:image" content="https://your-site.vercel.app/og-image.png">
+  <meta property="og:locale" content="zh_CN">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI 智能助手 - 智能对话与创作平台">
+  <meta name="twitter:description" content="免费AI对话平台，支持GPT-4o、Claude等多模型，注册即送50000积分！">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "AI 智能助手",
+    "description": "免费AI对话与创作平台，支持多模型、AI绘画、智能写作等功能",
+    "applicationCategory": "AI Application",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY"
+    }
+  }
+  </script>
+  
+  <title>AI 智能助手 - 智能对话与AI绘画平台 | 免费在线AI</title>
+  <link rel="stylesheet" href="assets/app.css?v=1.0.0">
+  <link rel="stylesheet" href="assets/chat.css?v=1.0.0">
+  <link rel="stylesheet" href="assets/studio.css?v=1.0.0">
+  <link rel="stylesheet" href="assets/pricing.css?v=1.0.0">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- ====== Icon Rail ====== -->
+    <nav class="rail" role="navigation">
+      <button class="rail-btn active" data-view="chat" onclick="Router.switchView('chat')" title="对话">
+        💬
+        <span class="tooltip">对话</span>
+      </button>
+      <button class="rail-btn" data-view="studio" onclick="Router.switchView('studio')" title="AI绘画">
+        🎨
+        <span class="tooltip">AI绘画</span>
+      </button>
+      <div class="rail-bottom">
+        <button class="rail-btn" data-view="pricing" onclick="Router.switchView('pricing')" title="价格">
+          💎
+          <span class="tooltip">价格</span>
+        </button>
+        <button class="rail-btn" onclick="Router.switchView('chat');Chat.newConversation()" title="新对话">
+          ✚
+          <span class="tooltip">新对话</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ====== Mobile Rail ====== -->
+    <nav class="mobile-rail" role="navigation">
+      <button class="rail-btn active" data-view="chat" onclick="Router.switchView('chat')">💬</button>
+      <button class="rail-btn" data-view="studio" onclick="Router.switchView('studio')">🎨</button>
+      <button class="rail-btn" data-view="pricing" onclick="Router.switchView('pricing')">💎</button>
+      <button class="rail-btn" onclick="Chat.newConversation()">✚</button>
+    </nav>
+
+    <!-- ====== Sidebar ====== -->
+    <aside class="sidebar" role="complementary">
+      <div class="sidebar-header">
+        <div class="sidebar-brand">
+          <div class="logo-icon">AI</div>
+          <span>AI 智能助手</span>
+        </div>
+      </div>
+
+      <button class="new-chat-btn" onclick="Chat.newConversation()">
+        <span>＋</span>
+        <span>新对话</span>
+      </button>
+
+      <div class="conversations" id="conversation-list">
+        <div class="empty-state" style="padding:20px;font-size:12px;color:var(--sidebar-text-secondary)">暂无对话</div>
+      </div>
+
+      <!-- User area (logged in) -->
+      <div class="sidebar-user" id="sidebar-user-area" style="display:none" onclick="UI.toggleUserMenu()">
+        <div class="user-avatar">
+          <span class="user-avatar-text">U</span>
+        </div>
+        <div class="user-info">
+          <div class="user-name">用户</div>
+          <div class="user-balance">余额: 0 积分</div>
+        </div>
+        <button class="user-menu-btn">⚙</button>
+      </div>
+
+      <!-- Guest area -->
+      <div class="sidebar-guest" id="sidebar-guest-area">
+        <button class="guest-btn primary" onclick="Auth.showLogin()">登录</button>
+        <button class="guest-btn" onclick="Auth.showRegister()">注册</button>
+      </div>
+
+      <!-- User menu dropdown -->
+      <div class="user-menu-dropdown" id="user-menu-dropdown">
+        <button class="user-menu-item" onclick="Pricing.showWallet()">
+          <span class="menu-icon">💰</span> 我的钱包
+        </button>
+        <button class="user-menu-item" onclick="Auth.showSettings()">
+          <span class="menu-icon">👤</span> 账号设置
+        </button>
+        <button class="user-menu-item danger" onclick="Auth.logout()">
+          <span class="menu-icon">🚪</span> 退出登录
+        </button>
+      </div>
+    </aside>
+
+    <!-- ====== Sidebar Mask (mobile) ====== -->
+    <div class="sidebar-mask" id="sidebar-mask"></div>
+
+    <!-- ====== Main Area ====== -->
+    <main class="main-area">
+
+      <!-- ====== Top Bar ====== -->
+      <header class="topbar">
+        <button class="hamburger" onclick="UI.toggleMobileSidebar()">☰</button>
+
+        <div class="topbar-center">
+          <!-- Model Picker -->
+          <div class="model-picker">
+            <button class="model-picker-btn" id="model-picker-btn" onclick="Chat.toggleModelDropdown()">
+              GPT-4o Mini <span style="font-size:10px">▼</span>
+            </button>
+            <div class="model-dropdown" id="model-dropdown"></div>
+          </div>
+
+          <!-- Agent Picker -->
+          <div class="agent-picker">
+            <button class="agent-picker-btn" id="agent-picker-btn" onclick="Chat.toggleAgentDropdown()">
+              默认助手 <span style="font-size:10px">▼</span>
+            </button>
+            <div class="agent-dropdown" id="agent-dropdown"></div>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Notification Bell -->
+          <div style="position:relative">
+            <button class="notification-btn" onclick="UI.toggleNotifications()">
+              🔔
+              <span class="notification-badge"></span>
+            </button>
+            <div class="notification-panel" id="notification-panel">
+              <div class="notification-header">
+                <span>通知</span>
+                <button class="modal-close" onclick="UI.closeNotifications()" style="width:24px;height:24px">✕</button>
+              </div>
+              <div class="notification-list">
+                <div class="notification-item unread">
+                  <span>🎉</span>
+                  <div><strong>欢迎使用 AI 智能助手！</strong><br><span style="font-size:12px;color:var(--text-muted)">开始你的AI之旅吧</span></div>
+                </div>
+                <div class="notification-item">
+                  <span>💡</span>
+                  <div><strong>新功能上线</strong><br><span style="font-size:12px;color:var(--text-muted)">图片生成功能已更新</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Login button (guest) -->
+          <button class="login-top-btn" id="top-login-btn" onclick="Auth.showLogin()">登录</button>
+
+          <!-- User area (logged in) -->
+          <div id="top-user-area" style="display:none;display:flex;align-items:center;gap:8px">
+            <div class="user-avatar" style="width:28px;height:28px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:600;cursor:pointer" onclick="UI.toggleUserMenu()">
+              <span class="user-avatar-text">U</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- ====== Announcement Bar ====== -->
+      <div class="announcement-bar" id="announcement-bar">
+        <span>💡 AI 智能助手已上线！支持对话、绘画、联网搜索</span>
+        <button class="close-ann" onclick="this.parentElement.classList.remove('show')">✕</button>
+      </div>
+
+      <!-- ====== Chat View ====== -->
+      <div class="chat-view" id="chat-view">
+        <div class="message-area" id="message-area">
+          <div class="message-list" id="message-list">
+            <!-- Dynamic content -->
+          </div>
+        </div>
+
+        <!-- Image preview above composer -->
+        <div class="image-preview-bar" id="image-preview-bar"></div>
+
+        <!-- Composer -->
+        <div class="composer-area">
+          <div class="composer-wrapper">
+            <div class="composer-box">
+              <div class="composer-toolbar">
+                <div style="position:relative">
+                  <button class="tool-btn" onclick="Chat.togglePlusMenu()" title="添加">＋</button>
+                  <div class="plus-menu" id="plus-menu">
+                    <button class="plus-menu-item" onclick="Chat.handleFileUpload()">
+                      <span class="plus-icon">📎</span> 上传图片
+                    </button>
+                    <button class="plus-menu-item" onclick="Chat.toggleWebSearch()" data-action="web-search">
+                      <span class="plus-icon">🌐</span> 联网搜索
+                    </button>
+                    <button class="plus-menu-item" onclick="Chat.toggleDeepThink()" data-action="deep-think">
+                      <span class="plus-icon">🧠</span> 深度思考
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="composer-input-wrap">
+                <textarea class="composer-textarea" id="composer-textarea" rows="1" placeholder="输入消息，按 Enter 发送..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();Chat.sendMessage()}"></textarea>
+                <button class="send-btn" onclick="Chat.sendMessage()" title="发送">
+                  ↑
+                </button>
+              </div>
+            </div>
+            <div class="composer-hint">AI 智能助手 · 内容由 AI 生成，请核实重要信息</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====== Studio View ====== -->
+      <div class="studio-view" id="studio-view">
+        <div class="studio-container">
+          <div class="studio-header">
+            <h1>AI 绘画</h1>
+            <p>输入描述词，AI 帮你生成精美图片</p>
+          </div>
+
+          <!-- Prompt Section -->
+          <div class="studio-prompt-section">
+            <div class="studio-prompt-area">
+              <textarea id="studio-prompt" placeholder="描述你想要的图片，越详细效果越好..." oninput="document.getElementById('char-count').textContent=this.value.length+'/500'"></textarea>
+            </div>
+            <div class="studio-prompt-hint">
+              <div class="hint-text">试试这些示例：</div>
+              <div class="char-count" id="char-count">0/500</div>
+            </div>
+            <div class="studio-examples" id="studio-examples"></div>
+          </div>
+
+          <!-- Settings -->
+          <div class="studio-settings">
+            <div class="studio-setting-group">
+              <label>风格</label>
+              <div class="style-presets" id="style-presets"></div>
+            </div>
+            <div class="studio-setting-group">
+              <label>比例</label>
+              <div class="ratio-presets" id="ratio-presets"></div>
+            </div>
+            <div class="studio-setting-group">
+              <label>质量</label>
+              <div class="quality-select" id="quality-select"></div>
+            </div>
+          </div>
+
+          <!-- Reference Upload -->
+          <div class="studio-upload-area">
+            <div class="upload-box" id="upload-box" onclick="Studio.handleUpload()">
+              <div class="upload-icon">🖼</div>
+              <div class="upload-text">点击上传参考图片（可选）</div>
+              <div class="upload-hint">支持 JPG、PNG、WEBP</div>
+            </div>
+            <div class="upload-preview" id="upload-preview">
+              <img src="" alt="reference">
+              <button class="remove-upload" onclick="Studio.removeUpload()">✕</button>
+            </div>
+          </div>
+
+          <!-- Generate Button -->
+          <button class="studio-generate-btn" id="studio-generate-btn" onclick="Studio.generate()">
+            <span class="btn-icon">✨</span> 生成图片
+          </button>
+
+          <!-- Progress -->
+          <div class="studio-progress" id="studio-progress">
+            <div class="progress-text">AI 正在创作...</div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="progress-percent" id="progress-percent">0%</div>
+            <div class="progress-steps" id="progress-steps">正在准备...</div>
+          </div>
+
+          <!-- History -->
+          <div class="studio-history">
+            <h2>
+              <span>生成记录</span>
+              <span class="history-count" id="history-count">(0 张)</span>
+              <button class="btn btn-sm btn-secondary" onclick="Studio.clearHistory()" style="margin-left:auto">清除</button>
+            </h2>
+            <div class="studio-empty">
+              <div class="empty-icon">🎨</div>
+              <div class="empty-text">还没有生成记录，试试输入描述词生成图片吧！</div>
+            </div>
+            <div class="image-grid" id="image-grid"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====== Pricing View ====== -->
+      <div class="pricing-view" id="pricing-view">
+        <div class="pricing-container">
+          <div class="pricing-header">
+            <h1>选择适合你的方案</h1>
+            <p>灵活的定价方案，满足不同使用需求</p>
+          </div>
+
+          <!-- Check-in -->
+          <div class="checkin-section" id="checkin-section"></div>
+
+          <!-- Plans -->
+          <div class="plan-cards" id="plan-cards"></div>
+
+          <!-- Token Packages -->
+          <div class="token-section">
+            <h2>积分套餐</h2>
+            <div class="token-packages" id="token-packages"></div>
+          </div>
+
+          <!-- Wallet Info -->
+          <div class="checkin-section" id="wallet-info" style="margin-top:0"></div>
+
+          <!-- Comparison Table -->
+          <div class="comparison-section">
+            <h2>功能对比</h2>
+            <div style="overflow-x:auto">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>功能</th>
+                    <th>免费版</th>
+                    <th>专业版</th>
+                    <th>旗舰版</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>对话次数</td>
+                    <td><span class="check">✓</span> 每日50次</td>
+                    <td><span class="check">✓</span> 无限</td>
+                    <td><span class="check">✓</span> 无限</td>
+                  </tr>
+                  <tr>
+                    <td>模型访问</td>
+                    <td>基础</td>
+                    <td>全部</td>
+                    <td>全部</td>
+                  </tr>
+                  <tr>
+                    <td>图片生成</td>
+                    <td>每日5次</td>
+                    <td>每日50次</td>
+                    <td><span class="check">✓</span> 无限</td>
+                  </tr>
+                  <tr>
+                    <td>联网搜索</td>
+                    <td><span class="cross">✕</span></td>
+                    <td><span class="check">✓</span></td>
+                    <td><span class="check">✓</span></td>
+                  </tr>
+                  <tr>
+                    <td>深度思考</td>
+                    <td><span class="cross">✕</span></td>
+                    <td><span class="check">✓</span></td>
+                    <td><span class="check">✓</span></td>
+                  </tr>
+                  <tr>
+                    <td>文件上传</td>
+                    <td>10MB</td>
+                    <td>50MB</td>
+                    <td>100MB</td>
+                  </tr>
+                  <tr>
+                    <td>客服支持</td>
+                    <td><span class="cross">✕</span></td>
+                    <td>邮件</td>
+                    <td>24/7 专属</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- FAQ -->
+          <div class="faq-section">
+            <h2>常见问题</h2>
+            <div class="faq-list" id="faq-list"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ====== Modal Overlay ====== -->
+  <div class="modal-overlay" id="modal-overlay"></div>
+
+  <!-- ====== Toast Container ====== -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- ====== Scripts ====== -->
+  <script src="vendor/marked.min.js?v=1.0.0"></script>
+  <script src="vendor/purify.min.js?v=1.0.0"></script>
+  <script src="assets/common.js?v=1.0.0"></script>
+  <script src="assets/chat.js?v=1.0.0"></script>
+  <script src="assets/studio.js?v=1.0.0"></script>
+  <script src="assets/pricing.js?v=1.0.0"></script>
+  <script>
+    /* ==========================================================
+       Inline initialization - model/agent dropdowns, style presets
+       ========================================================== */
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        // Populate model dropdown
+        var modelDD = document.getElementById('model-dropdown');
+        if (modelDD) {
+          var html = '';
+          State.models.forEach(function(m) {
+            var selected = m.id === State.currentModel ? 'selected' : '';
+            var badge = m.badge ? '<span class="model-badge">' + m.badge + '</span>' : '';
+            html += '<div class="model-option ' + selected + '" onclick="Chat.selectModel(\'' + m.id + '\')">';
+            html += '  <span>' + m.name + '</span>';
+            html += '  ' + badge;
+            html += '</div>';
+          });
+          modelDD.innerHTML = html;
+        }
+
+        // Populate agent dropdown
+        var agentDD = document.getElementById('agent-dropdown');
+        if (agentDD) {
+          var html2 = '';
+          State.agents.forEach(function(a) {
+            var selected = a.id === State.currentAgent ? 'selected' : '';
+            html2 += '<div class="agent-option ' + selected + '" onclick="Chat.selectAgent(\'' + a.id + '\')">';
+            html2 += '  <div class="agent-avatar">' + a.avatar + '</div>';
+            html2 += '  <div class="agent-info">';
+            html2 += '    <div class="agent-name">' + a.name + '</div>';
+            html2 += '    <div class="agent-desc">' + a.desc + '</div>';
+            html2 += '  </div>';
+            html2 += '</div>';
+          });
+          agentDD.innerHTML = html2;
+        }
+
+        // Populate style presets
+        var styleContainer = document.getElementById('style-presets');
+        if (styleContainer) {
+          var styles = ['写实', '动漫', '油画', '水彩', '3D渲染', '像素风'];
+          var html3 = '';
+          styles.forEach(function(s) {
+            var active = s === '写实' ? 'active' : '';
+            html3 += '<button class="style-preset-btn ' + active + '" data-style="' + s + '" onclick="Studio.setStyle(\'' + s + '\')">' + s + '</button>';
+          });
+          styleContainer.innerHTML = html3;
+        }
+
+        // Populate ratio presets
+        var ratioContainer = document.getElementById('ratio-presets');
+        if (ratioContainer) {
+          var ratios = ['1:1', '16:9', '9:16', '4:3', '3:4'];
+          var html4 = '';
+          ratios.forEach(function(r) {
+            var active = r === '1:1' ? 'active' : '';
+            html4 += '<button class="ratio-preset-btn ' + active + '" data-ratio="' + r + '" onclick="Studio.setRatio(\'' + r + '\')">' + r + '</button>';
+          });
+          ratioContainer.innerHTML = html4;
+        }
+
+        // Populate quality select
+        var qualityContainer = document.getElementById('quality-select');
+        if (qualityContainer) {
+          var qualities = ['标准', '高清'];
+          var html5 = '';
+          qualities.forEach(function(q) {
+            var active = q === '标准' ? 'active' : '';
+            html5 += '<button class="quality-btn ' + active + '" data-quality="' + q + '" onclick="Studio.setQuality(\'' + q + '\')">' + q + '</button>';
+          });
+          qualityContainer.innerHTML = html5;
+        }
+
+        // Populate example prompts
+        var examplesContainer = document.getElementById('studio-examples');
+        if (examplesContainer) {
+          var examples = ['一只可爱的橘猫坐在窗台上', '未来城市夜景，赛博朋克风格', '水彩风格的山水画', '3D渲染的科幻机器人'];
+          var html6 = '';
+          examples.forEach(function(ex) {
+            html6 += '<span class="studio-example-chip" onclick="Studio.useExample(\'' + ex + '\')">' + ex + '</span>';
+          });
+          examplesContainer.innerHTML = html6;
+        }
+
+        // Show announcement bar
+        var annBar = document.getElementById('announcement-bar');
+        if (annBar) {
+          setTimeout(function() {
+            annBar.classList.add('show');
+            setTimeout(function() {
+              annBar.classList.remove('show');
+            }, 8000);
+          }, 1000);
+        }
+      }, 150);
+    });
+  </script>
+</body>
+</html>
