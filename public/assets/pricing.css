@@ -1,0 +1,650 @@
+﻿/* ============================================================
+   pricing.css - Pricing & Subscription Styles
+   ============================================================ */
+
+.pricing-view {
+  overflow-y: auto;
+  height: 100%;
+  display: none;
+}
+
+.pricing-view.active {
+  display: block;
+}
+
+.pricing-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 20px;
+  width: 100%;
+}
+
+/* ----- Pricing Header ----- */
+.pricing-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.pricing-header h1 {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.pricing-header p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ----- Plan Cards ----- */
+.plan-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.plan-card {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  transition: all var(--transition);
+  position: relative;
+  background: var(--main-bg);
+}
+
+.plan-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.plan-card.featured {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(16,163,127,0.15);
+}
+
+.plan-card.featured .plan-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 16px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.plan-card .plan-name {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.plan-card .plan-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.plan-card .plan-price {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.plan-card .plan-price .price-currency {
+  font-size: 18px;
+  font-weight: 600;
+  vertical-align: super;
+}
+
+.plan-card .plan-price .price-period {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.plan-card .plan-features {
+  margin: 16px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plan-card .plan-features li {
+  padding: 6px 0;
+  font-size: 13px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.plan-card .plan-features li .check-icon {
+  color: var(--primary);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.plan-card .plan-features li .cross-icon {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.plan-card .plan-btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: var(--main-bg);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-align: center;
+}
+
+.plan-card .plan-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.plan-card .plan-btn.primary {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+.plan-card .plan-btn.primary:hover {
+  background: var(--primary-hover);
+}
+
+.plan-card .plan-btn.current {
+  background: var(--main-alt-bg);
+  color: var(--text-secondary);
+  border-color: var(--border-color);
+  cursor: default;
+}
+
+/* ----- Feature Comparison Table ----- */
+.comparison-section {
+  margin-bottom: 40px;
+}
+
+.comparison-section h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 12px 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.comparison-table th {
+  font-weight: 600;
+  background: var(--main-alt-bg);
+  position: sticky;
+  top: 0;
+}
+
+.comparison-table th:first-child,
+.comparison-table td:first-child {
+  text-align: left;
+  font-weight: 500;
+}
+
+.comparison-table td .check {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.comparison-table td .cross {
+  color: var(--text-muted);
+}
+
+.comparison-table tr:hover {
+  background: var(--main-alt-bg);
+}
+
+/* ----- Token Packages ----- */
+.token-section {
+  margin-bottom: 40px;
+}
+
+.token-section h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.token-packages {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.token-card {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  background: var(--main-bg);
+}
+
+.token-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.token-card.popular {
+  border-color: var(--primary);
+  background: #f0fdf4;
+}
+
+.token-card .token-amount {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.token-card .token-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.token-card .token-price {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.token-card .token-bonus {
+  font-size: 11px;
+  color: var(--primary);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* ----- FAQ Section ----- */
+.faq-section {
+  margin-bottom: 40px;
+}
+
+.faq-section h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.faq-list {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.faq-question {
+  padding: 14px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--main-alt-bg);
+  transition: background var(--transition);
+  user-select: none;
+}
+
+.faq-question:hover {
+  background: #eef0f1;
+}
+
+.faq-question .faq-toggle {
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.faq-question .faq-toggle.open {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  padding: 0 16px;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.faq-answer.open {
+  padding: 14px 16px;
+  max-height: 300px;
+}
+
+/* ----- Check-in Section ----- */
+.checkin-section {
+  background: var(--main-alt-bg);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.checkin-section h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.checkin-section p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.checkin-btn {
+  padding: 10px 32px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: var(--primary);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.checkin-btn:hover {
+  background: var(--primary-hover);
+}
+
+.checkin-btn:disabled {
+  background: var(--border-color);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.checkin-btn.checked {
+  background: var(--border-color);
+  color: var(--text-secondary);
+}
+
+/* ----- Mobile ----- */
+@media (max-width: 768px) {
+  .pricing-container {
+    padding: 20px 16px;
+  }
+
+  .pricing-header h1 {
+    font-size: 24px;
+  }
+
+  .plan-cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .token-packages {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .comparison-table {
+    font-size: 12px;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 8px 10px;
+  }
+}
+
+/* ============================================
+   PAYMENT MODAL
+   ============================================ */
+.payment-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.payment-overlay.hidden { display: none; }
+
+.payment-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.payment-modal {
+  background: #fff;
+  border-radius: 20px;
+  width: 420px;
+  max-width: 92vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 32px 28px;
+  position: relative;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+  animation: slideUp 0.3s ease;
+}
+
+.payment-close {
+  position: absolute;
+  top: 16px; right: 18px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #999;
+  width: 32px; height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+.payment-close:hover { background: #f3f4f6; color: #333; }
+
+.payment-header { text-align: center; margin-bottom: 24px; }
+.payment-title { font-size: 20px; font-weight: 700; color: #111; margin-bottom: 6px; }
+.payment-subtitle { font-size: 14px; color: #6b7280; }
+
+.payment-methods { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+
+.payment-method {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.payment-method:hover { border-color: #d1d5db; background: #f9fafb; }
+.payment-method.selected {
+  border-color: #10a37f;
+  background: #f0fdf4;
+}
+
+.pay-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.pay-alipay-icon { background: #e8f4fd; }
+.pay-wechat-icon { background: #e8f8e8; }
+
+.pay-info { flex: 1; }
+.pay-name { font-size: 16px; font-weight: 600; color: #111; margin-bottom: 2px; }
+.pay-desc { font-size: 12px; color: #9ca3af; }
+
+.pay-check {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  border: 2px solid #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #10a37f;
+  font-weight: bold;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.payment-method.selected .pay-check {
+  border-color: #10a37f;
+  background: #10a37f;
+  color: #fff;
+}
+
+.payment-order {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+.order-title { font-size: 14px; font-weight: 600; color: #6b7280; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+.order-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; font-size: 14px; color: #374151; }
+.order-value { font-weight: 500; color: #111; }
+.order-price { font-weight: 700; color: #10a37f; font-size: 18px; }
+.order-status { font-size: 14px; color: #f59e0b; font-weight: 500; }
+
+.payment-confirm-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #10a37f;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.payment-confirm-btn:hover { background: #059669; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(16, 163, 127, 0.3); }
+.payment-confirm-btn.paid-btn { background: #3b82f6; }
+.payment-confirm-btn.paid-btn:hover { background: #2563eb; }
+
+.payment-footer {
+  text-align: center;
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 14px;
+}
+
+/* QR Code Area */
+.payment-qr-area {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.payment-qr-placeholder {
+  display: inline-block;
+  padding: 12px;
+  background: #fff;
+  border: 2px dashed #e5e7eb;
+  border-radius: 16px;
+  margin-bottom: 10px;
+}
+.qr-mock {
+  width: 180px;
+  height: 210px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.payment-qr-hint {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* Success Overlay */
+.payment-success-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255,255,255,0.97);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  animation: fadeIn 0.3s ease;
+}
+
+.success-animation { text-align: center; }
+.success-icon { font-size: 64px; margin-bottom: 12px; animation: bounceIn 0.6s ease; }
+.success-text { font-size: 24px; font-weight: 700; color: #10a37f; margin-bottom: 4px; }
+.success-amount { font-size: 18px; color: #374151; margin-bottom: 8px; }
+.success-msg { font-size: 14px; color: #6b7280; }
+
+/* Confetti */
+.confetti-particle {
+  position: absolute;
+  top: -10px;
+  border-radius: 2px;
+  animation: confettiFall 2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes confettiFall {
+  0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(400px) rotate(720deg); opacity: 0; }
+}
