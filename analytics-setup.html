@@ -1,0 +1,24 @@
+﻿<!-- ==========================================
+     百度统计 / GA4 安装指南
+     将此代码添加到 public/index.html 的 <head> 标签中
+     ========================================== -->
+
+<!-- 百度统计 -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?你的百度统计ID";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(s, hm);
+})();
+</script>
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-你的GA4-ID"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-你的GA4-ID');
+</script>
