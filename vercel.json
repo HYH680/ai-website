@@ -1,6 +1,5 @@
-﻿{
+{
   "version": 2,
-  "buildCommand": null,
   "outputDirectory": "public",
   "rewrites": [
     { "source": "/admin", "destination": "/admin/index.html" },
@@ -21,13 +20,5 @@
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     }
-  ],
-  "env": {
-    "DATABASE_URL": "@vercel_postgres_url",
-    "JWT_SECRET": "your-jwt-secret-change-in-production",
-    "OPENAI_API_KEY": "@openai_api_key",
-    "OPENAI_BASE_URL": "https://api.openai.com/v1",
-    "SITE_NAME": "AI 智能助手",
-    "SITE_URL": "https://your-site.vercel.app"
-  }
+  ]
 }
