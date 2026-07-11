@@ -1,0 +1,19 @@
+﻿{
+  "name": "ai-website",
+  "version": "1.0.0",
+  "description": "AI 对话与生图平台",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "@vercel/postgres": "^0.10.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "openai": "^4.73.0",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "vercel": "^39.0.0"
+  }
+}
