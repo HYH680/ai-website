@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 智能助手 - fjrxb.beauty | 你的全能 AI 伙伴</title>
+    <meta name="description" content="AI 智能助手 - fjrxb.beauty，支持智能对话、文案生成、代码编写、创意写作等多场景 AI 服务">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="canonical" href="https://www.fjrxb.beauty/">
+<meta property="og:title" content="AI 智能助手 - fjrxb.beauty">
+<meta property="og:description" content="你的全能 AI 伙伴，支持智能对话、文案创作、代码编写等">
+<meta property="og:url" content="https://www.fjrxb.beauty">
+<meta property="og:type" content="website">
+<meta name="keywords" content="AI,人工智能,智能助手,聊天机器人,OpenAI,GPT,AI写作,AI编程">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <i class="fas fa-robot"></i>
+                <span>AI 智能助手</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#home" class="active">首页</a>
+                <a href="#features">功能</a>
+                <a href="#chat">AI 对话</a>
+                <a href="#about">关于</a>
+                <a href="#pricing" class="pricing-nav-link">
+                    <i class="fas fa-crown" style="color:#f1c40f;font-size:0.85rem;"></i> 会员
+                </a>
+            </div>
+            <div class="membership-status" id="memberStatus"><i class="fas fa-crown" style="color:#f1c40f;"></i> 会员</div>
+            <button class="nav-toggle" id="navToggle" aria-label="菜单">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 首页 Hero -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="glow-text">你的全能 <span class="gradient-text">AI 伙伴</span></h1>
+                <p>智能对话 · 文案创作 · 代码编写 · 创意灵感 · 数据分析</p>
+                <div class="hero-buttons">
+                    <a href="#chat" class="btn btn-primary">
+                        <i class="fas fa-comment-dots"></i> 开始对话
+                    </a>
+                    <a href="#features" class="btn btn-outline">
+                        <i class="fas fa-info-circle"></i> 了解更多
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="ai-sphere">
+                    <i class="fas fa-brain"></i>
+                    <div class="orbit orbit-1"></div>
+                    <div class="orbit orbit-2"></div>
+                    <div class="orbit orbit-3"></div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>向下滚动</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- 功能介绍 -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>强大功能，<span class="gradient-text">一应俱全</span></h2>
+                <p>AI 智能助手提供多种场景下的智能服务</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-delay="0">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>智能对话</h3>
+                    <p>自然流畅的对话体验，回答各类问题，提供专业建议</p>
+                </div>
+                <div class="feature-card" data-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <h3>文案创作</h3>
+                    <p>撰写文章、广告文案、营销邮件、社交媒体内容等</p>
+                </div>
+                <div class="feature-card" data-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>代码编写</h3>
+                    <p>支持多种编程语言，帮助调试、优化和生成代码</p>
+                </div>
+                <div class="feature-card" data-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>创意灵感</h3>
+                    <p>头脑风暴、创意策划、故事构思，激发无限灵感</p>
+                </div>
+                <div class="feature-card" data-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>数据分析</h3>
+                    <p>分析数据趋势、生成报告、提供决策支持</p>
+                </div>
+                <div class="feature-card" data-delay="500">
+                    <div class="feature-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>多语言翻译</h3>
+                    <p>支持多种语言互译，打破语言障碍</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI 对话区域 -->
+    <section id="chat" class="chat-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>AI <span class="gradient-text">智能对话</span></h2>
+                <p>开始与 AI 助手对话，体验智能的魅力</p>
+            </div>
+            <div class="chat-container">
+                <div class="chat-header">
+                    <div class="chat-status">
+                        <span class="status-dot"></span>
+                        <span>在线</span>
+                    </div>
+                    <div class="chat-model-selector">
+                        <label for="modelSelect">模型：</label>
+                        <select id="modelSelect">
+                            <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+                            <option value="gpt-4" selected>GPT-4</option>
+                            <option value="gpt-4-turbo">GPT-4 Turbo</option>
+                            <option value="claude-3">Claude 3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message ai-message">
+                        <div class="message-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>你好！我是 AI 智能助手 👋</p>
+                            <p>我可以帮你回答问题、撰写文案、编写代码、提供创意灵感等。请告诉我你需要什么帮助？</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input-area">
+                    <div class="suggestion-chips" id="suggestionChips">
+                        <button class="chip" data-prompt="用 Python 写一个贪吃蛇游戏">🐍 贪吃蛇游戏</button>
+                        <button class="chip" data-prompt="写一首关于夏天的诗">🌞 写诗</button>
+                        <button class="chip" data-prompt="解释什么是量子计算">🔬 量子计算</button>
+                        <button class="chip" data-prompt="帮我制定一个学习计划">📚 学习计划</button>
+                    </div>
+                    <div class="input-wrapper">
+                        <textarea id="userInput" placeholder="输入你的问题..." rows="1"></textarea>
+                        <button id="sendBtn" class="btn-send" aria-label="发送">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="chat-toolbar">
+                        <button class="toolbar-btn" id="themeToggle" title="切换主题">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <button class="toolbar-btn" id="voiceInputBtn" title="语音输入">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <button class="toolbar-btn" id="readAloudBtn" title="朗读回复">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
+                        <button class="toolbar-btn" id="exportChatBtn" title="导出对话">
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <button class="toolbar-btn" id="shareChatBtn" title="分享对话">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                        <button class="toolbar-btn" id="clearChatBtn" title="清空对话">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                    <p class="chat-disclaimer">AI 回复仅供参考，请验证重要信息。使用 API Key 连接真实 AI 服务。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- AI 图片生成 -->
+    <section id="imagegen" class="imagegen-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>AI <span class="gradient-text">图片生成</span></h2>
+                <p>用文字描述，AI 为你生成精美图片</p>
+            </div>
+            <div class="imagegen-container">
+                <div class="imagegen-input-area">
+                    <div class="input-wrapper">
+                        <input type="text" id="imagePrompt" placeholder="描述你想要的图片，如：一只在星空下奔跑的白色狐狸..." />
+                        <button id="generateImageBtn" class="btn-send" aria-label="生成图片">
+                            <i class="fas fa-wand-magic-sparkles"></i>
+                        </button>
+                    </div>
+                    <div class="imagegen-options">
+                        <label>尺寸：
+                            <select id="imageSize">
+                                <option value="1024x1024">1024×1024</option>
+                                <option value="1792x1024">1792×1024</option>
+                                <option value="1024x1792">1024×1792</option>
+                            </select>
+                        </label>
+                        <label>数量：
+                            <select id="imageCount">
+                                <option value="1">1 张</option>
+                                <option value="2">2 张</option>
+                                <option value="4">4 张</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <div class="imagegen-results" id="imageResults">
+                    <div class="imagegen-placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>输入描述，生成图片</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 关于 -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>关于 <span class="gradient-text">我们</span></h2>
+                <p>让 AI 技术惠及每一个人</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>我们的使命</h3>
+                    <p>AI 智能助手致力于将最前沿的人工智能技术带给每一个人。无论你是开发者、创作者、学生还是专业人士，我们都能为你提供智能、高效、个性化的 AI 服务。</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number" data-target="50000">0</span>
+                            <span class="stat-label">活跃用户</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-target="1000000">0</span>
+                            <span class="stat-label">对话次数</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-target="99">0</span>
+                            <span class="stat-label">满意度 %</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-tech">
+                    <h3>技术栈</h3>
+                    <div class="tech-stack">
+                        <span><i class="fab fa-html5"></i> HTML5</span>
+                        <span><i class="fab fa-css3-alt"></i> CSS3</span>
+                        <span><i class="fab fa-js"></i> JavaScript</span>
+                        <span><i class="fas fa-database"></i> OpenAI API</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 会员定价 -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>选择你的 <span class="gradient-text">会员方案</span></h2>
+                <p>解锁全部 AI 能力，让智能助手无处不在</p>
+                <div class="pricing-toggle">
+                    <span class="toggle-label active" data-period="month">月付</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="priceToggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="toggle-label" data-period="year">年付
+                        <span class="toggle-badge">省 60%</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- 免费 -->
+                <div class="pricing-card">
+                    <div class="pricing-badge">入门</div>
+                    <div class="pricing-header">
+                        <i class="fas fa-leaf pricing-icon"></i>
+                        <h3>免费版</h3>
+                        <div class="pricing-amount">
+                            <span class="price">¥0</span>
+                            <span class="period">/ 永久</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 每日 20 次对话</li>
+                        <li><i class="fas fa-check"></i> 每日 3 次 AI 绘画</li>
+                        <li><i class="fas fa-check"></i> GPT-3.5 模型</li>
+                        <li class="disabled"><i class="fas fa-times"></i> GPT-4 模型</li>
+                        <li class="disabled"><i class="fas fa-times"></i> 无限使用</li>
+                        <li class="disabled"><i class="fas fa-times"></i> 无广告体验</li>
+                    </ul>
+                    <button class="btn btn-outline pricing-btn" style="width:100%;">当前使用中</button>
+                </div>
+
+                <!-- 月卡 -->
+                <div class="pricing-card popular">
+                    <div class="pricing-badge popular-badge">最受欢迎</div>
+                    <div class="pricing-header">
+                        <i class="fas fa-star pricing-icon popular-icon"></i>
+                        <h3>月卡会员</h3>
+                        <div class="pricing-amount">
+                            <span class="price month-price" data-month="39" data-year="399">¥39</span>
+                            <span class="period month-period" data-month="/ 月" data-year="/ 年">/ 月</span>
+                        </div>
+                        <div class="pricing-save month-save" data-month="" data-year="省 ¥69">省 ¥69</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 无限对话次数</li>
+                        <li><i class="fas fa-check"></i> 每日 50 次 AI 绘画</li>
+                        <li><i class="fas fa-check"></i> GPT-4 高级模型</li>
+                        <li><i class="fas fa-check"></i> 无广告体验</li>
+                        <li class="disabled"><i class="fas fa-times"></i> 优先排队</li>
+                        <li class="disabled"><i class="fas fa-times"></i> 新功能抢先体验</li>
+                    </ul>
+                    <button class="btn btn-primary pricing-btn" style="width:100%;">立即开通</button>
+                </div>
+
+                <!-- 季卡 -->
+                <div class="pricing-card">
+                    <div class="pricing-badge">超值</div>
+                    <div class="pricing-header">
+                        <i class="fas fa-gem pricing-icon"></i>
+                        <h3>季卡会员</h3>
+                        <div class="pricing-amount">
+                            <span class="price month-price" data-month="79" data-year="799">¥79</span>
+                            <span class="period month-period" data-month="/ 季" data-year="/ 年">/ 季</span>
+                        </div>
+                        <div class="pricing-save month-save" data-month="" data-year="省 ¥149">省 ¥149</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 无限对话次数</li>
+                        <li><i class="fas fa-check"></i> 无限 AI 绘画</li>
+                        <li><i class="fas fa-check"></i> GPT-4 高级模型</li>
+                        <li><i class="fas fa-check"></i> 无广告体验</li>
+                        <li><i class="fas fa-check"></i> 优先排队</li>
+                        <li class="disabled"><i class="fas fa-times"></i> 新功能抢先体验</li>
+                    </ul>
+                    <button class="btn btn-primary pricing-btn" style="width:100%;">立即开通</button>
+                </div>
+
+                <!-- 年卡 -->
+                <div class="pricing-card vip-card">
+                    <div class="pricing-badge vip-badge">👑 尊享</div>
+                    <div class="pricing-header">
+                        <i class="fas fa-crown pricing-icon vip-icon"></i>
+                        <h3>年卡会员</h3>
+                        <div class="pricing-amount">
+                            <span class="price month-price" data-month="199" data-year="1999">¥199</span>
+                            <span class="period month-period" data-month="/ 年" data-year="/ 年">/ 年</span>
+                        </div>
+                        <div class="pricing-save month-save" data-month="" data-year="省 ¥269">省 ¥269</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 无限对话次数</li>
+                        <li><i class="fas fa-check"></i> 无限 AI 绘画</li>
+                        <li><i class="fas fa-check"></i> GPT-4 高级模型</li>
+                        <li><i class="fas fa-check"></i> 无广告体验</li>
+                        <li><i class="fas fa-check"></i> 优先排队</li>
+                        <li><i class="fas fa-check"></i> 新功能抢先体验</li>
+                        <li><i class="fas fa-check"></i> 专属客服</li>
+                    </ul>
+                    <button class="btn btn-primary pricing-btn" style="width:100%;">立即开通</button>
+                    <div class="pricing-countdown">
+                        <i class="fas fa-fire"></i>
+                        <span>限时优惠 · 剩余 <strong id="countdownTimer">02:34:12</strong></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-robot"></i>
+                    <span>AI 智能助手</span>
+                </div>
+                <p>&copy; 2026 AI 智能助手. 让 AI 触手可及。</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- API Key 配置弹窗 -->
+    <div class="modal-overlay" id="apiModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-key"></i> 配置 API Key</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>要使用真实的 AI 对话功能，请输入你的 OpenAI API Key。你的 Key 仅保存在本地浏览器中。</p>
+                <div class="form-group">
+                    <label for="apiKeyInput">OpenAI API Key</label>
+                    <div class="input-with-toggle">
+                        <input type="password" id="apiKeyInput" placeholder="sk-..." />
+                        <button id="toggleKey" class="btn-toggle" aria-label="显示/隐藏 Key">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="apiBaseInput">API 地址（可选）</label>
+                    <input type="text" id="apiBaseInput" placeholder="https://api.openai.com/v1" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="modalCancel">取消</button>
+                <button class="btn btn-primary" id="modalSave">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 打字指示器 -->
+    <template id="typingTemplate">
+        <div class="message ai-message typing-indicator">
+            <div class="message-avatar">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="message-content">
+                <div class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script src="js/api.js"></script>\n    <script src="js/app.js"></script>
+</body>
+</html>
